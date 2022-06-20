@@ -1,0 +1,1 @@
+rosservice call /uav2/control_manager/goto "[-114.324538, -120.114929, 4.666610, 0]"
