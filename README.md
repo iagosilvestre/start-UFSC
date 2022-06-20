@@ -1,5 +1,5 @@
 # start-UFSC
 Start scripts for SARC-Barinet competition - UFSC team
 
-
-cp SARC.world /home/ID/mrs_workspace/src/simulation/ros_packages/mrs_gazebo_common_resources/worlds/
+To execute the start.sh script, copy SARC.world to the MRS UAV System common resources. The World file is located on the /sarc_environment/worlds path.
+cp SARC.world       /home/ID/mrs_workspace/src/simulation/ros_packages/mrs_gazebo_common_resources/worlds/
