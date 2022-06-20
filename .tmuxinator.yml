@@ -16,36 +16,55 @@ windows:
       panes:
         - waitForRos; roslaunch mrs_simulation simulation.launch gui:=true world_name:=SARC
         #- waitForRos; roslaunch sarc_environment sarc_mrs.launch gui:=true
-  - SARC-UFSC:
+  - SARC-UFSC-spawn:
       layout: tiled
       panes:
-        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 --enable-rangefinder --enable-realsense-front --enable-ground-truth --pos_file `pwd`/pos/pos1.yaml";
+        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 --enable-rangefinder --enable-realsense-down --enable-ground-truth --pos_file `pwd`/pos/pos1.yaml";
           export UAV_NAME=uav1; waitForOdometry; roslaunch mrs_uav_general core.launch
-        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "2 --enable-rangefinder --enable-realsense-front --enable-ground-truth --pos_file `pwd`/pos/pos2.yaml";
+        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "2 --enable-rangefinder --enable-realsense-down --enable-ground-truth --pos_file `pwd`/pos/pos2.yaml";
           export UAV_NAME=uav2; waitForOdometry; roslaunch mrs_uav_general core.launch
-        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "3 --enable-rangefinder --enable-realsense-front --enable-ground-truth --pos_file `pwd`/pos/pos3.yaml";
+        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "3 --enable-rangefinder --enable-realsense-down --enable-ground-truth --pos_file `pwd`/pos/pos3.yaml";
           export UAV_NAME=uav3; waitForOdometry; roslaunch mrs_uav_general core.launch
-        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "4 --enable-rangefinder --enable-realsense-front --enable-ground-truth --pos_file `pwd`/pos/pos4.yaml";
+        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "4 --enable-rangefinder --enable-realsense-down --enable-ground-truth --pos_file `pwd`/pos/pos4.yaml";
           export UAV_NAME=uav4; waitForOdometry; roslaunch mrs_uav_general core.launch
-        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "5 --enable-rangefinder --enable-realsense-front --enable-ground-truth --pos_file `pwd`/pos/pos5.yaml";
+        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "5 --enable-rangefinder --enable-realsense-down --enable-ground-truth --pos_file `pwd`/pos/pos5.yaml";
           export UAV_NAME=uav5; waitForOdometry; roslaunch mrs_uav_general core.launch
+  - SARC-UFSC-takeoff:
+      layout: tiled
+      panes:
         - waitForOdometry;
           sleep 10;
           rosservice call /uav1/control_manager/motors 1;
-          rosservice call /uav2/control_manager/motors 1;
-          rosservice call /uav3/control_manager/motors 1;
-          rosservice call /uav4/control_manager/motors 1;
-          rosservice call /uav5/control_manager/motors 1;
           sleep 2;
           rosservice call /uav1/mavros/cmd/arming 1;
+          sleep 2;
+          rosservice call /uav1/mavros/set_mode 0 offboard
+        - waitForOdometry;
+          sleep 10;
+          rosservice call /uav2/control_manager/motors 1;
+          sleep 2;
           rosservice call /uav2/mavros/cmd/arming 1;
+          sleep 2;
+          rosservice call /uav2/mavros/set_mode 0 offboard
+        - waitForOdometry;
+          sleep 10;
+          rosservice call /uav3/control_manager/motors 1;
+          sleep 2;
           rosservice call /uav3/mavros/cmd/arming 1;
+          sleep 2;
+          rosservice call /uav3/mavros/set_mode 0 offboard
+        - waitForOdometry;
+          sleep 10;
+          rosservice call /uav4/control_manager/motors 1;
+          sleep 2;
           rosservice call /uav4/mavros/cmd/arming 1;
+          sleep 2;
+          rosservice call /uav4/mavros/set_mode 0 offboard
+        - waitForOdometry;
+          sleep 10;
+          rosservice call /uav5/control_manager/motors 1;
+          sleep 2;
           rosservice call /uav5/mavros/cmd/arming 1;
           sleep 2;
-          rosservice call /uav1/mavros/set_mode 0 offboard;
-          rosservice call /uav2/mavros/set_mode 0 offboard;
-          rosservice call /uav3/mavros/set_mode 0 offboard;
-          rosservice call /uav4/mavros/set_mode 0 offboard;
           rosservice call /uav5/mavros/set_mode 0 offboard
 
