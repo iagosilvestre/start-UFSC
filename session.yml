@@ -19,15 +19,15 @@ windows:
   - SARC-UFSC-spawn:
       layout: tiled
       panes:
-        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 --enable-rangefinder --enable-realsense-down --enable-ground-truth --pos_file `pwd`/pos/pos1.yaml";
+        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/pos/pos1.yaml";
           export UAV_NAME=uav1; waitForOdometry; roslaunch mrs_uav_general core.launch
-        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "2 --enable-rangefinder --enable-realsense-down --enable-ground-truth --pos_file `pwd`/pos/pos2.yaml";
+        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "2 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/pos/pos2.yaml";
           export UAV_NAME=uav2; waitForOdometry; roslaunch mrs_uav_general core.launch
-        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "3 --enable-rangefinder --enable-realsense-down --enable-ground-truth --pos_file `pwd`/pos/pos3.yaml";
+        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "3 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/pos/pos3.yaml";
           export UAV_NAME=uav3; waitForOdometry; roslaunch mrs_uav_general core.launch
-        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "4 --enable-rangefinder --enable-realsense-down --enable-ground-truth --pos_file `pwd`/pos/pos4.yaml";
+        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "4 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/pos/pos4.yaml";
           export UAV_NAME=uav4; waitForOdometry; roslaunch mrs_uav_general core.launch
-        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "5 --enable-rangefinder --enable-realsense-down --enable-ground-truth --pos_file `pwd`/pos/pos5.yaml";
+        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "5 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/pos/pos5.yaml";
           export UAV_NAME=uav5; waitForOdometry; roslaunch mrs_uav_general core.launch
   - SARC-UFSC-takeoff:
       layout: tiled
