@@ -1,0 +1,1219 @@
+<?xml version='1.0' ?>
+    <?xml-model href='http://sdformat.org/schemas/root.xsd' schematypens='http://www.w3.org/2001/XMLSchema'?>
+    <sdf version='1.5'>
+      <world name='default'>
+        <plugin name='mrs_gazebo_static_transform_republisher_plugin' filename='libMRSGazeboStaticTransformRepublisher.so'/>
+        <spherical_coordinates>
+          <surface_model>EARTH_WGS84</surface_model>
+          <latitude_deg>47.397743</latitude_deg>
+          <longitude_deg>8.545594</longitude_deg>
+          <elevation>0.0</elevation>
+          <heading_deg>0</heading_deg>
+        </spherical_coordinates>
+                                
+        <physics name='default_physics' default='0' type='ode'>
+          <gravity>0 0 -9.8066</gravity>
+          <ode>
+            <solver>
+              <type>quick</type>
+              <iters>10</iters>
+              <sor>1.3</sor>
+              <use_dynamic_moi_rescaling>0</use_dynamic_moi_rescaling>
+            </solver>
+            <constraints>
+              <cfm>0</cfm>
+              <erp>0.2</erp>
+              <contact_max_correcting_vel>1000</contact_max_correcting_vel>
+              <contact_surface_layer>0.001</contact_surface_layer>
+            </constraints>
+          </ode>
+          <max_step_size>0.004</max_step_size>
+          <real_time_factor>1</real_time_factor>
+          <real_time_update_rate>250</real_time_update_rate>
+          <magnetic_field>6.0e-06 2.3e-05 -4.2e-05</magnetic_field>
+        </physics>
+                  
+        <scene>
+          <shadows>false</shadows>
+          <sky>
+            <clouds/>
+          </sky>
+        </scene>
+                
+        <light name='sun' type='directional'>
+          <pose frame=''>0 0 1000 0.4 0.2 0</pose>
+          <diffuse>1 1 1 1</diffuse>
+          <specular>0.6 0.6 0.6 1</specular>
+          <direction>0.1 0.1 -0.9</direction>
+          <attenuation>
+            <range>20</range>
+            <constant>0.5</constant>
+            <linear>0.01</linear>
+            <quadratic>0.001</quadratic>
+          </attenuation>
+          <cast_shadows>1</cast_shadows>
+        </light>
+                
+        <model name='ground_plane'>
+          <static>true</static>
+          <link name='link'>
+            <collision name='collision'>
+              <pose>0 0 0 0 0 0</pose>
+              <geometry>
+                <plane>
+                  <normal>0 0 1</normal>
+                  <size>250 250</size>
+                </plane>
+              </geometry>
+              <surface>
+                <friction>
+                  <ode>
+                    <mu>1</mu>
+                    <mu2>1</mu2>
+                  </ode>
+                </friction>
+              </surface>
+            </collision>
+            <visual name='grass'>
+              <pose>0 0 0 0 0 0</pose>
+              <cast_shadows>false</cast_shadows>
+              <geometry>
+                <mesh>
+                  <uri>model://SARcgrass/grass_plane.dae</uri>
+                  <scale>1.0 1.0 1.0</scale>
+                </mesh>
+              </geometry>
+            </visual>
+          </link>
+        </model>
+                
+        <model name='the_void'>
+          <static>1</static>
+          <link name='link'>
+            <pose frame=''>0 0 0.1 0 -0 0</pose>
+            <visual name='the_void'>
+              <pose frame=''>0 0 2 0 -0 0</pose>
+              <geometry>
+                <sphere>
+                  <radius>0.25</radius>
+                </sphere>
+              </geometry>
+              <material>
+                <script>
+                  <uri>file://media/materials/scripts/Gazebo.material</uri>
+                  <name>Gazebo/Black</name>
+                </script>
+              </material>
+            </visual>
+            <self_collide>0</self_collide>
+            <enable_wind>0</enable_wind>
+            <kinematic>0</kinematic>
+          </link>
+          <pose frame=''>-1000 -1000 0 0 0 0</pose>
+        </model>
+			<model name='SARcfireTree0'>
+          <include>
+            <pose>27.428195816736043 37.04560291451942 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree1'>
+          <include>
+            <pose>19.176420631717953 48.234008917175984 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree2'>
+          <include>
+            <pose>44.084013471080354 78.16159134961181 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree3'>
+          <include>
+            <pose>63.206932192253646 50.90799171503384 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree4'>
+          <include>
+            <pose>55.49879858919313 70.49879858919313 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree5'>
+          <include>
+            <pose>23.962065711766765 64.25950567855699 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree6'>
+          <include>
+            <pose>37.594998186768784 58.703378030105284 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree7'>
+          <include>
+            <pose>38.093541454012815 53.66508335481545 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree8'>
+          <include>
+            <pose>44.08268331061326 44.895004211239 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree9'>
+          <include>
+            <pose>46.48515155152301 61.9544736036213 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree10'>
+          <include>
+            <pose>53.018441379327214 57.76715513789253 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree11'>
+          <include>
+            <pose>36.34014499162404 56.40488671115977 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree12'>
+          <include>
+            <pose>30.108531430246014 57.65041101522341 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree13'>
+          <include>
+            <pose>34.40807523595518 36.70963824315771 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree14'>
+          <include>
+            <pose>34.58253662092647 37.28027572101543 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree15'>
+          <include>
+            <pose>54.71231624718991 73.830906070769 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree16'>
+          <include>
+            <pose>40.04683057547447 55.445563162665145 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree17'>
+          <include>
+            <pose>29.892387667115848 75.72367639530664 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree18'>
+          <include>
+            <pose>52.76841270364204 52.052179655565496 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree19'>
+          <include>
+            <pose>41.70434550808466 35.519241700615936 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree20'>
+          <include>
+            <pose>15.8341560210193 49.86339129397365 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree21'>
+          <include>
+            <pose>55.71869247312224 49.27886381819931 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree22'>
+          <include>
+            <pose>39.356468315974354 57.401692941064056 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree23'>
+          <include>
+            <pose>36.52032630344821 52.74027347960961 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree24'>
+          <include>
+            <pose>54.71055232770016 61.2442589956423 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree25'>
+          <include>
+            <pose>53.09246853555666 55.686147201281614 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree26'>
+          <include>
+            <pose>39.17495311882739 48.280532380410264 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree27'>
+          <include>
+            <pose>45.589778485080274 72.20356921998797 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree28'>
+          <include>
+            <pose>47.165603513517055 38.11889601012584 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree29'>
+          <include>
+            <pose>38.257171223340535 46.033923217887924 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree30'>
+          <include>
+            <pose>33.36017943075234 62.91303001758183 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree31'>
+          <include>
+            <pose>47.585717897948356 72.87083145635322 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree32'>
+          <include>
+            <pose>26.454128585381937 62.82071250763779 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree33'>
+          <include>
+            <pose>39.992985329154806 55.004383252824894 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree34'>
+          <include>
+            <pose>42.28446179440055 43.24746290128592 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree35'>
+          <include>
+            <pose>38.39947862255525 60.581681369376966 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree36'>
+          <include>
+            <pose>42.52358372032948 55.30985711900237 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree37'>
+          <include>
+            <pose>53.349524063484864 48.19807775101618 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree38'>
+          <include>
+            <pose>15.960691057075682 52.4733668172386 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree39'>
+          <include>
+            <pose>37.517583201840324 56.551186175834864 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree40'>
+          <include>
+            <pose>37.92543427087038 74.73817443117917 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree41'>
+          <include>
+            <pose>25.254897876541218 63.513088680207446 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree42'>
+          <include>
+            <pose>33.749631289731774 38.717232822575966 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree43'>
+          <include>
+            <pose>61.266725325066446 56.86059737626299 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree44'>
+          <include>
+            <pose>47.77049910942855 63.33284010622584 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree45'>
+          <include>
+            <pose>32.8686455058033 51.97291961175032 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree46'>
+          <include>
+            <pose>40.88856368053873 62.23677043762356 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree47'>
+          <include>
+            <pose>29.44198431209358 69.53186190888542 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree48'>
+          <include>
+            <pose>39.663020031153685 51.148301331103774 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree49'>
+          <include>
+            <pose>44.80833459030451 44.2003036889404 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree50'>
+          <include>
+            <pose>22.07126276514373 57.839633012668386 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree51'>
+          <include>
+            <pose>51.2402467160888 60.72719176044342 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree52'>
+          <include>
+            <pose>46.58690650579758 53.35769975599474 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree53'>
+          <include>
+            <pose>43.694224595274484 38.998555291381415 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree54'>
+          <include>
+            <pose>50.168757030297726 61.11000564396555 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree55'>
+          <include>
+            <pose>39.315009815757065 59.32485781330138 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree56'>
+          <include>
+            <pose>50.71277285720192 37.170951934677305 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree57'>
+          <include>
+            <pose>40.433979809439215 67.42755574277275 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree58'>
+          <include>
+            <pose>33.19451393631998 41.6434815563527 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARcfireTree59'>
+          <include>
+            <pose>23.747644569276115 54.14825014375709 0 0 0 0</pose>
+            <uri>model://SARcfireTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree0'>
+          <include>
+            <pose>68.79457458432181 77.49678724410626 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree1'>
+          <include>
+            <pose>4.733594863371316 76.19019402127145 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree2'>
+          <include>
+            <pose>30.98881943673996 31.525072054669963 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree3'>
+          <include>
+            <pose>65.93550059464359 59.5731285130161 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree4'>
+          <include>
+            <pose>19.75256628137104 38.01038583441202 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree5'>
+          <include>
+            <pose>34.46567067137414 28.96302760477717 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree6'>
+          <include>
+            <pose>52.99488390804846 25.813012869906988 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree7'>
+          <include>
+            <pose>1.2582261083379862 49.5551987594145 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree8'>
+          <include>
+            <pose>73.6820522076465 51.45987366053673 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree9'>
+          <include>
+            <pose>71.27039014186875 28.76102716518826 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree10'>
+          <include>
+            <pose>56.61346176980696 19.37231626102801 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree11'>
+          <include>
+            <pose>42.200490356541025 23.53152180999368 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree12'>
+          <include>
+            <pose>61.30798265711705 27.727025899107808 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree13'>
+          <include>
+            <pose>57.250406636131956 35.15567719407813 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree14'>
+          <include>
+            <pose>55.50370562099152 77.98518882099361 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree15'>
+          <include>
+            <pose>35.15676367767943 24.42100933401936 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree16'>
+          <include>
+            <pose>68.78585333606699 37.01260248173486 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree17'>
+          <include>
+            <pose>75.45174529637684 75.46807469010521 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree18'>
+          <include>
+            <pose>62.77904911382933 21.22867088400192 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree19'>
+          <include>
+            <pose>26.256589163916 76.16299682979543 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree20'>
+          <include>
+            <pose>9.567979318106161 65.47858504897823 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree21'>
+          <include>
+            <pose>38.57538758927048 14.20443817636415 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree22'>
+          <include>
+            <pose>72.36320305570709 53.30391639736424 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree23'>
+          <include>
+            <pose>66.91600296979526 84.89324974743433 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree24'>
+          <include>
+            <pose>56.54009904230378 90.47035686213397 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree25'>
+          <include>
+            <pose>46.10772255431756 28.54454710915227 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree26'>
+          <include>
+            <pose>19.16916288952563 26.328812412863105 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree27'>
+          <include>
+            <pose>31.87153467464094 16.75857728646428 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree28'>
+          <include>
+            <pose>35.230497384751885 93.84448158771153 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree29'>
+          <include>
+            <pose>47.76384774520912 78.89466639056532 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree30'>
+          <include>
+            <pose>14.993256783934168 36.83153756661863 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree31'>
+          <include>
+            <pose>36.80358998410833 81.03267049526957 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree32'>
+          <include>
+            <pose>77.07816721476647 36.91576952506408 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree33'>
+          <include>
+            <pose>17.19993770036141 67.12300816718714 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree34'>
+          <include>
+            <pose>5.291947327702992 34.145297986082454 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree35'>
+          <include>
+            <pose>79.4383184466077 63.38287336705834 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree36'>
+          <include>
+            <pose>27.639513120069793 79.2588214037096 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree37'>
+          <include>
+            <pose>58.44484352100652 32.22251518317509 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree38'>
+          <include>
+            <pose>17.12640995495515 73.52266800032558 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree39'>
+          <include>
+            <pose>32.89205824093084 26.49160271604217 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree40'>
+          <include>
+            <pose>4.235676162143889 74.01622830158354 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree41'>
+          <include>
+            <pose>61.5929141077316 75.13571815913447 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree42'>
+          <include>
+            <pose>28.017688637319154 31.483389839368847 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree43'>
+          <include>
+            <pose>69.51255976878194 71.35907901137668 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree44'>
+          <include>
+            <pose>76.43412043780697 55.0 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree45'>
+          <include>
+            <pose>49.009784614451675 91.13627234690739 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree46'>
+          <include>
+            <pose>68.51857222706536 46.280997478791264 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree47'>
+          <include>
+            <pose>50.001675662616584 81.05525589729659 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree48'>
+          <include>
+            <pose>52.166869319436074 83.66334787086191 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree49'>
+          <include>
+            <pose>8.6614673544634 33.0565232051642 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree50'>
+          <include>
+            <pose>14.80095376136616 78.49849077380657 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree51'>
+          <include>
+            <pose>5.280200021046383 41.672317484456315 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree52'>
+          <include>
+            <pose>5.874001699543818 63.508567001282515 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree53'>
+          <include>
+            <pose>17.831770576124956 83.37403975162526 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree54'>
+          <include>
+            <pose>49.29791384505975 20.29971312583885 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree55'>
+          <include>
+            <pose>74.52821815694622 47.66080066796707 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree56'>
+          <include>
+            <pose>66.58309734185445 69.13448357943919 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree57'>
+          <include>
+            <pose>61.63415411443867 74.47947985960333 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree58'>
+          <include>
+            <pose>20.81217521787088 80.46310351528422 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARccloseTree59'>
+          <include>
+            <pose>74.76814123347499 67.6545685097483 0 0 0 0</pose>
+            <uri>model://SARccloseTree</uri>
+          </include>
+        </model>
+			<model name='SARctree0'>
+          <include>
+            <pose>79.90841384208662 87.31719631946035 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree1'>
+          <include>
+            <pose>96.04387194002393 62.8764525424049 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree2'>
+          <include>
+            <pose>-15.647318935958438 78.62088547789821 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree3'>
+          <include>
+            <pose>60.21147562433858 105.02515760594436 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree4'>
+          <include>
+            <pose>-10.759520865636631 90.5421991460318 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree5'>
+          <include>
+            <pose>17.578192348358524 99.00527524952734 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree6'>
+          <include>
+            <pose>1.217985023646854 32.60919321368641 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree7'>
+          <include>
+            <pose>3.444475596205635 4.685637117274673 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree8'>
+          <include>
+            <pose>2.473611222443303 5.2008000986291165 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree9'>
+          <include>
+            <pose>11.497358939291082 12.74309686386436 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree10'>
+          <include>
+            <pose>72.44860629442198 10.33832495187044 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree11'>
+          <include>
+            <pose>70.69438067518061 12.752809378621599 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree12'>
+          <include>
+            <pose>18.545175660924922 103.18832444321784 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree13'>
+          <include>
+            <pose>5.038302433840904 29.598839866923907 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree14'>
+          <include>
+            <pose>56.01613490721665 15.35867504860623 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree15'>
+          <include>
+            <pose>95.77879548000891 53.05216154051528 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree16'>
+          <include>
+            <pose>55.409663176365186 1.2601180640207232 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree17'>
+          <include>
+            <pose>32.69157319540668 114.52235974010341 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree18'>
+          <include>
+            <pose>-12.20239216188871 45.79530980433492 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree19'>
+          <include>
+            <pose>-10.63281842291213 39.51999391939046 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree20'>
+          <include>
+            <pose>77.0159492281152 30.96156150184847 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree21'>
+          <include>
+            <pose>85.67391258688347 80.31746316217206 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree22'>
+          <include>
+            <pose>17.380807220135683 103.50701545275888 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree23'>
+          <include>
+            <pose>-14.830565906377025 59.79705293151902 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree24'>
+          <include>
+            <pose>-12.23707813549688 71.97285555988024 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree25'>
+          <include>
+            <pose>93.27215090237306 74.3894772438012 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree26'>
+          <include>
+            <pose>20.17981577315736 109.45550861268083 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree27'>
+          <include>
+            <pose>93.02807604656223 43.728534483566236 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree28'>
+          <include>
+            <pose>85.99331119516741 50.165908199495654 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree29'>
+          <include>
+            <pose>88.792847753024 49.871665050483834 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree30'>
+          <include>
+            <pose>44.40337968981766 105.33086016353289 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree31'>
+          <include>
+            <pose>2.9801294640071916 99.11856370864197 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree32'>
+          <include>
+            <pose>2.9072404526900684 5.776245523131337 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree33'>
+          <include>
+            <pose>-6.216469063996726 50.14245336234883 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree34'>
+          <include>
+            <pose>90.74536180530407 46.9627242714008 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree35'>
+          <include>
+            <pose>86.20355592937696 16.23061326058093 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree36'>
+          <include>
+            <pose>18.11466534831384 97.95238770389517 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree37'>
+          <include>
+            <pose>24.710326383085896 99.40443643435498 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree38'>
+          <include>
+            <pose>65.26846810052695 21.467610256915165 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree39'>
+          <include>
+            <pose>62.38559717425004 2.262837936665491 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree40'>
+          <include>
+            <pose>71.54739062476685 86.54739062476685 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree41'>
+          <include>
+            <pose>87.89007069325334 78.35754814582255 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree42'>
+          <include>
+            <pose>36.338563033655575 2.639011924320755 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree43'>
+          <include>
+            <pose>67.10234351644516 8.057364025332042 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree44'>
+          <include>
+            <pose>21.566068371339227 1.4639752457109836 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree45'>
+          <include>
+            <pose>10.456572616447584 92.81386266588177 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree46'>
+          <include>
+            <pose>-7.340917415944304 45.797857837825546 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree47'>
+          <include>
+            <pose>83.11112930218033 99.64288125415263 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree48'>
+          <include>
+            <pose>98.56159412269085 49.87652439625816 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree49'>
+          <include>
+            <pose>47.79966455533633 -0.49749702179340005 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree50'>
+          <include>
+            <pose>71.06527945408028 1.1933576342074161 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree51'>
+          <include>
+            <pose>-9.495590522111726 88.38519735330965 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree52'>
+          <include>
+            <pose>70.35297723000348 8.260513816055791 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree53'>
+          <include>
+            <pose>13.778498571927663 7.695159208839634 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree54'>
+          <include>
+            <pose>58.8529760868543 8.337246739655114 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree55'>
+          <include>
+            <pose>59.88842334089141 104.22557514621812 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree56'>
+          <include>
+            <pose>97.39353630202734 53.9981920973881 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree57'>
+          <include>
+            <pose>83.22224863585473 45.81282744231589 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree58'>
+          <include>
+            <pose>-5.855308013071237 37.397796438310635 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARctree59'>
+          <include>
+            <pose>100.22676317170081 68.90444387079825 0 0 0 0</pose>
+            <uri>model://SARctree</uri>
+          </include>
+        </model>
+			<model name='SARclandArea'>
+          <include>
+            <pose>-102 -111 0.02 0 0 0</pose>
+            <uri>model://SARclandArea</uri>
+          </include>
+        </model>
+			<model name='SARckc'>
+          <include>
+            <pose>125 -125 100 0 0 0.785398</pose>
+            <uri>model://SARckc</uri>
+          </include>
+        </model>
+		<gui>
+        <camera name='camera'>
+          <pose>-60 -100 30 0 0.4 0.89</pose>
+        </camera>
+      </gui>
+    
+        <plugin name='mrs_gazebo_rviz_cam_synchronizer' filename='libMRSGazeboRvizCameraSynchronizer.so' >
+          <target_frame_id>gazebo_user_camera</target_frame_id>
+          <world_origin_frame_id>uav1/gps_origin</world_origin_frame_id>
+          <frame_to_follow>uav1</frame_to_follow>
+        </plugin>
+    
+    </world>
+  </sdf>
