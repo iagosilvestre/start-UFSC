@@ -31,7 +31,7 @@ void process_image_callback(const sensor_msgs::Image img){
 
         //Tratamento de encontrar pixel vermelho
 }
-
+}
 
 int main(int argc, char** argv){
 
@@ -43,7 +43,11 @@ int main(int argc, char** argv){
     //client = n.serviceClient<ball_chaser::DriveToTarget>("/ball_chaser/command_robot");
 
     // Subscribe to /camera/rgb/image_raw topic to read the image data inside the process_image_callback function
-    ros::Subscriber sub1 = n.subscribe("/uav5/bluefox_optflow/image_raw", 10, process_image_callback);
+    ros::Subscriber sub1 = n.subscribe("/uav1/bluefox_optflow/image_raw", 10, process_image_callback);
+    ros::Subscriber sub2 = n.subscribe("/uav2/bluefox_optflow/image_raw", 10, process_image_callback);
+    ros::Subscriber sub3 = n.subscribe("/uav3/bluefox_optflow/image_raw", 10, process_image_callback);
+    ros::Subscriber sub4 = n.subscribe("/uav4/bluefox_optflow/image_raw", 10, process_image_callback);
+    ros::Subscriber sub5 = n.subscribe("/uav5/bluefox_optflow/image_raw", 10, process_image_callback);
 
     // Handle ROS communication events
     ros::spin();
