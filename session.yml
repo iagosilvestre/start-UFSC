@@ -33,31 +33,31 @@ windows:
       layout: tiled
       panes:
         - waitForOdometry;export UAV_NAME=uav1;
-          sleep 10;
+          sleep 15;
           rosservice call /$UAV_NAME/control_manager/motors 1;
           rosservice call /$UAV_NAME/mavros/cmd/arming 1;
           rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
           rosservice call /$UAV_NAME/uav_manager/takeoff
         - waitForOdometry;export UAV_NAME=uav2;
-          sleep 10;
+          sleep 15;
           rosservice call /$UAV_NAME/control_manager/motors 1;
           rosservice call /$UAV_NAME/mavros/cmd/arming 1;
           rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
           rosservice call /$UAV_NAME/uav_manager/takeoff
         - waitForOdometry;export UAV_NAME=uav3;
-          sleep 10;
+          sleep 15;
           rosservice call /$UAV_NAME/control_manager/motors 1;
           rosservice call /$UAV_NAME/mavros/cmd/arming 1;
           rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
           rosservice call /$UAV_NAME/uav_manager/takeoff
         - waitForOdometry;export UAV_NAME=uav4;
-          sleep 10;
+          sleep 15;
           rosservice call /$UAV_NAME/control_manager/motors 1;
           rosservice call /$UAV_NAME/mavros/cmd/arming 1;
           rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
           rosservice call /$UAV_NAME/uav_manager/takeoff
         - waitForOdometry;export UAV_NAME=uav5;
-          sleep 10;
+          sleep 15;
           rosservice call /$UAV_NAME/control_manager/motors 1;
           rosservice call /$UAV_NAME/mavros/cmd/arming 1;
           rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
