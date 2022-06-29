@@ -89,10 +89,6 @@ int main(int argc, char** argv){
     ros::Subscriber sub4 = n.subscribe("/uav4/bluefox_optflow/image_raw", 10, process_image_callback);
     ros::Subscriber sub5 = n.subscribe("/uav5/bluefox_optflow/image_raw", 10, process_image_callback);
     ros::Subscriber sub6 = n.subscribe("/uav6/bluefox_optflow/image_raw", 10, process_image_callback);
-    // while(1){
-      // if(detectedBy==1){
-
-      // }
     // Handle ROS communication events
     ros::spin();
 // }
