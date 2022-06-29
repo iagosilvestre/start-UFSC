@@ -7,7 +7,7 @@
 
 // Define a global client that can request services
 ros::ServiceClient client;
-int detectedBy=0;
+ros::Publisher detect_fire;// = n.advertise<std_msgs::String>("detect_fire", 10);
 // This function calls the command_robot service to drive the robot in the specified direction
 
 // This callback function continuously executes and reads the image data
@@ -16,8 +16,6 @@ void process_image_callback(const sensor_msgs::Image img){
     int red_pixel = 200;
     int red_height,red_width;
     bool red_pixel_found = false;
-    ros::NodeHandle n;
-    ros::Publisher wuav_detect = n.advertise<std_msgs::String>("wuav_detect", 10);
     // ros::Publisher wuav5_detect = n.advertise<std_msgs::String>("wuav5_detect", 10);
     ros::Rate loop_rate(10);
     std_msgs::String msg;
@@ -37,54 +35,60 @@ void process_image_callback(const sensor_msgs::Image img){
     if(red_pixel_found){
       if(img.header.frame_id=="uav1/bluefox_optflow_optical"){
         //publica topico uav1 encontrou fogo
-        //uav1_detect.publish("UAV1 detected");
-        detectedBy=1;
-        printf("debug uav 1 detect\n");
-        msg.data = "UAV1 detected";
-        wuav_detect.publish(msg);
+        // printf("debug uav 1 detect\n");
+        msg.data = "UAV1";
+        detect_fire.publish(msg);
       }
-      // if(img.frame_id=="uav2/bluefox_optflow_optical"){
-      //   //publica topico uav2 encontrou fogo
-      //   uav2_detect.publish("UAV2 detected");
-      // }
-      // if(img.frame_id=="uav3/bluefox_optflow_optical"){
-      //   //publica topico uav3 encontrou fogo
-      //   uav3_detect.publish("UAV3 detected");
-      // }
-      // if(img.frame_id=="uav4/bluefox_optflow_optical"){
-      //   //publica topico uav4 encontrou fogo
-      //   uav4_detect.publish("UAV4 detected");
-      // }
-      if(img.header.frame_id=="uav5/bluefox_optflow_optical"){
+      else if(img.header.frame_id=="uav2/bluefox_optflow_optical"){
+        //publica topico uav2 encontrou fogo
+        // printf("debug uav 2 detect\n");
+        msg.data = "UAV2";
+        detect_fire.publish(msg);
+      }
+      else if(img.header.frame_id=="uav3/bluefox_optflow_optical"){
+        //publica topico uav3 encontrou fogo
+        // printf("debug uav 3 detect\n");
+        msg.data = "UAV3";
+        detect_fire.publish(msg);
+      }
+      else if(img.header.frame_id=="uav4/bluefox_optflow_optical"){
+        //publica topico uav4 encontrou fogo
+        // printf("debug uav 4 detect\n");
+        msg.data = "UAV4";
+        detect_fire.publish(msg);
+      }
+      else if(img.header.frame_id=="uav5/bluefox_optflow_optical"){
         //publica topico uav5 encontrou fogo
-        // wuav5_detect.publish("UAV5 detected");
-        printf("debug uav 5 detect\n");
-        msg.data = "UAV5 detected";
-        wuav_detect.publish(msg);
+        // printf("debug uav 5 detect\n");
+        msg.data = "UAV5";
+        detect_fire.publish(msg);
       }
-      // if(img.frame_id=="uav6/bluefox_optflow_optical"){
-      //   //publica topico uav6 encontrou fogo
-      //   uav6_detect.publish("UAV6 detected");
-      // }
-        //Tratamento de encontrar pixel vermelho
+      if(img.header.frame_id=="uav6/bluefox_optflow_optical"){
+      // publica topico uav6 encontrou fogo
+      // printf("debug uav 6 detect\n");
+      msg.data = "UAV6";
+      detect_fire.publish(msg);
+    }
 }
+    else{
+      msg.data = "No fire detected by UAV:"; //falta implementar
+      detect_fire.publish(msg);
+    }
 }
-
 int main(int argc, char** argv){
 
     // Initialize the process_image node and create a handle to it
     ros::init(argc, argv, "process_image");
     ros::NodeHandle n;
-
-
+    detect_fire = n.advertise<std_msgs::String>("detect_fire", 10);
 
     // Subscribe to /camera/rgb/image_raw topic to read the image data inside the process_image_callback function
     ros::Subscriber sub1 = n.subscribe("/uav1/bluefox_optflow/image_raw", 10, process_image_callback);
-    ros::Subscriber sub2 = n.subscribe("/uav5/bluefox_optflow/image_raw", 10, process_image_callback);
-    ros::Subscriber sub3 = n.subscribe("/uav5/bluefox_optflow/image_raw", 10, process_image_callback);
-    ros::Subscriber sub4 = n.subscribe("/uav5/bluefox_optflow/image_raw", 10, process_image_callback);
+    ros::Subscriber sub2 = n.subscribe("/uav2/bluefox_optflow/image_raw", 10, process_image_callback);
+    ros::Subscriber sub3 = n.subscribe("/uav3/bluefox_optflow/image_raw", 10, process_image_callback);
+    ros::Subscriber sub4 = n.subscribe("/uav4/bluefox_optflow/image_raw", 10, process_image_callback);
     ros::Subscriber sub5 = n.subscribe("/uav5/bluefox_optflow/image_raw", 10, process_image_callback);
-    ros::Subscriber sub6 = n.subscribe("/uav5/bluefox_optflow/image_raw", 10, process_image_callback);
+    ros::Subscriber sub6 = n.subscribe("/uav6/bluefox_optflow/image_raw", 10, process_image_callback);
     // while(1){
       // if(detectedBy==1){
 
