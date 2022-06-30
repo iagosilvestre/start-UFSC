@@ -54,7 +54,7 @@ void process_image_callback(const sensor_msgs::Image img){
             detect_fire[i].publish(msg);
           }
           else{
-            msg.data = "0";
+            msg.data = 0;
             detect_fire[i].publish(msg);
           }
         }
