@@ -144,7 +144,7 @@ void process_image_callback(const sensor_msgs::Image img){
   		}
   		xyxy << landingX << "," << landingY;
   		std::string xy = xyxy.str();
-  		std::cout <<  "UAV:"<< i << ", pos: "<< xy << "\n"; //Debug posicoes
+  		// std::cout <<  "UAV:"<< i << ", pos: "<< xy << "\n"; //Debug posicoes
   		landingXY.data = xy;
   		landPos[i].publish(landingXY);
       xyxy.str(std::string());
