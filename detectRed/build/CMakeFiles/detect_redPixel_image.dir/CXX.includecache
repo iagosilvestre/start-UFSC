@@ -19,6 +19,10 @@ iostream
 -
 vector
 -
+sstream
+-
+string
+-
 
 /opt/ros/noetic/include/ros/advertise_options.h
 ros/forwards.h

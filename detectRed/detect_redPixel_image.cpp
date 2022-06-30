@@ -4,10 +4,14 @@
 #include <std_msgs/String.h>
 #include <iostream>
 #include <vector>
+#include <sstream>
+#include <string>
 
 // Define a global client that can request services
 ros::ServiceClient client;
 ros::Publisher detect_fire;// = n.advertise<std_msgs::String>("detect_fire", 10);
+const int uavQty=6;
+ros::Publisher landPos[uavQty];
 // This function calls the command_robot service to drive the robot in the specified direction
 
 // This callback function continuously executes and reads the image data
@@ -19,6 +23,12 @@ void process_image_callback(const sensor_msgs::Image img){
     // ros::Publisher wuav5_detect = n.advertise<std_msgs::String>("wuav5_detect", 10);
     ros::Rate loop_rate(10);
     std_msgs::String msg;
+    float landZeroX=-102.0;
+    float landZeroY=-111.0;
+    float landingX,landingY;
+    std_msgs::String landingXY;
+    std::stringstream xyxy;
+
     // Loop through each pixel in the image and check if there's a red  one
     int uav_column;
     for(int i = 0; i < img.height; i++){
@@ -74,13 +84,49 @@ void process_image_callback(const sensor_msgs::Image img){
       msg.data = "No fire detected by UAV:"; //falta implementar
       detect_fire.publish(msg);
     }
+
+
+    for(int i=1;i<=uavQty;i++){  //Calcula a posicao de pouso dos drones e bota no topico
+      int lane=(i/4)+1; // Divisao inteira por 4, inicia em 1
+  		int pos=i%4; // Resto da divisao por 4
+
+  		if(pos==1){
+  		  landingX=landZeroX;
+  		  landingY=landZeroY+(1.5*lane);
+  		}
+  		else if(pos==2){
+  		  landingX=landZeroX+(1.5*lane);
+  		  landingY=landZeroY;
+  		}
+  		else if(pos==3){
+  		  landingX=landZeroX;
+  		  landingY=landZeroY-(1.5*lane);
+  		}
+  		else{ //pos==0 uavN multiplo de 4
+  		  landingX=landZeroX-(1.5*(lane-1));
+  		  landingY=landZeroY;
+  		}
+  		xyxy << landingX << "," << landingY;
+  		std::string xy = xyxy.str();
+  		std::cout <<  "UAV:"<< i << ", pos: "<< xy << "\n"; //Debug posicoes
+  		landingXY.data = xy;
+  		landPos[i].publish(landingXY);
+      xyxy.str(std::string());
+    }
 }
 int main(int argc, char** argv){
-
     // Initialize the process_image node and create a handle to it
     ros::init(argc, argv, "process_image");
     ros::NodeHandle n;
     detect_fire = n.advertise<std_msgs::String>("detect_fire", 10);
+
+	for(int i=1;i<=uavQty;i++){ //Rotina para criar topicos que contem a posicao de pouso respectiva para cada drone
+		std::stringstream ss;
+		ss << "landPos_" << i;
+		std::string s = ss.str();
+		landPos[i]=n.advertise<std_msgs::String>(s, 10);
+    }
+
 
     // Subscribe to /camera/rgb/image_raw topic to read the image data inside the process_image_callback function
     ros::Subscriber sub1 = n.subscribe("/uav1/bluefox_optflow/image_raw", 10, process_image_callback);

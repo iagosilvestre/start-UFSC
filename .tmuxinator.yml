@@ -14,7 +14,7 @@ windows:
   - gazebo:
       layout: tiled
       panes:
-        - waitForRos; roslaunch mrs_simulation simulation.launch gui:=true world_name:=SARC
+        - waitForRos; roslaunch mrs_simulation simulation.launch gui:=true world_name:=grass_plane
         #- waitForRos; roslaunch sarc_environment sarc_mrs.launch gui:=true
   - SARC-UFSC-spawn:
       layout: tiled
