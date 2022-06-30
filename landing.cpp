@@ -18,17 +18,21 @@ std::vector <int> landingPos (2);
 
 int lane=(uavN/4)+1; // Divisao inteira por 4, inicia em 1
 int pos=uavN%4; // Resto da divisao por 4
-int modQuad=1; // Quadrante angular em relacao ao origem da area de pouso
 
-if(pos==3 || pos==0){
-  modQuad=-1;
-}
-if(pos==1 || pos==3){
+if(pos==1){
   landingX=landZeroX;
-  landingY=landZeroY+(1.5*lane*modQuad); //Para quadrante positivo adiciona, negativo subtrai
+  landingY=landZeroY+(1.5*lane);
 }
-else{ //(pos==2 || pos==0)
-  landingX=landZeroX+(1.5*lane*modQuad); //Para quadrante positivo adiciona, negativo subtrai
+else if(pos==2){
+  landingX=landZeroX+(1.5*lane);
+  landingY=landZeroY;
+}
+else if(pos==3){
+  landingX=landZeroX;
+  landingY=landZeroY-(1.5*lane);
+}
+else{ //pos==0 uavN multiplo de 4
+  landingX=landZeroX-(1.5*(lane-1));
   landingY=landZeroY;
 }
 landingPos[0]=landingX;
