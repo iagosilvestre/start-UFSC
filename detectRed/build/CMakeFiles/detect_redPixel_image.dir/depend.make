@@ -60,6 +60,7 @@ CMakeFiles/detect_redPixel_image.dir/detect_redPixel_image.cpp.o: /opt/ros/noeti
 CMakeFiles/detect_redPixel_image.dir/detect_redPixel_image.cpp.o: /opt/ros/noetic/include/rosconsole/macros_generated.h
 CMakeFiles/detect_redPixel_image.dir/detect_redPixel_image.cpp.o: /opt/ros/noetic/include/sensor_msgs/Image.h
 CMakeFiles/detect_redPixel_image.dir/detect_redPixel_image.cpp.o: /opt/ros/noetic/include/std_msgs/Header.h
+CMakeFiles/detect_redPixel_image.dir/detect_redPixel_image.cpp.o: /opt/ros/noetic/include/std_msgs/Int8.h
 CMakeFiles/detect_redPixel_image.dir/detect_redPixel_image.cpp.o: /opt/ros/noetic/include/std_msgs/String.h
 CMakeFiles/detect_redPixel_image.dir/detect_redPixel_image.cpp.o: /opt/ros/noetic/include/xmlrpcpp/XmlRpcDecl.h
 CMakeFiles/detect_redPixel_image.dir/detect_redPixel_image.cpp.o: /opt/ros/noetic/include/xmlrpcpp/XmlRpcValue.h

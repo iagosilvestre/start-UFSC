@@ -12,7 +12,7 @@
 ros::ServiceClient client;
 const int uavQty=6;
 ros::Publisher detect_fire[uavQty];// = n.advertise<std_msgs::String>("detect_fire", 10);
-ros::Publisher landPos[uavQty];
+//ros::Publisher landPos[uavQty];
 ros::Subscriber subsc[uavQty];
 // This function calls the command_robot service to drive the robot in the specified direction
 
@@ -55,6 +55,7 @@ void process_image_callback(const sensor_msgs::Image img){
           }
           else{
             msg.data = 0;
+            //printf("debug uav 1 no fire\n");
             detect_fire[i].publish(msg);
           }
         }
@@ -74,8 +75,8 @@ int main(int argc, char** argv){
 		std::string s = ss.str();
 		std::string df = dfdf.str();
     std::string sub = subsub.str();
-		detect_fire[i] = n.advertise<std_msgs::String>(df, 10);
-		landPos[i]=n.advertise<std_msgs::String>(s, 10);
+		detect_fire[i] = n.advertise<std_msgs::Int8>(df, 10);
+		//landPos[i]=n.advertise<std_msgs::String>(s, 10);
     // Subscribe to /camera/rgb/image_raw topic to read the image data inside the process_image_callback function
     subsc[i] = n.subscribe(sub, 10, process_image_callback);
 	}
