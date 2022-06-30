@@ -151,30 +151,30 @@ void process_image_callback(const sensor_msgs::Image img){
     }
 }
 int main(int argc, char** argv){
-    // Initialize the process_image node and create a handle to it
-    ros::init(argc, argv, "process_image");
-    ros::NodeHandle n;
+	// Initialize the process_image node and create a handle to it
+	ros::init(argc, argv, "process_image");
+	ros::NodeHandle n;
 
 	for(int i=1;i<=uavQty;i++){ //Rotina para criar topicos que contem a posicao de pouso respectiva para cada drone
 		std::stringstream ss,dfdf;
 		ss << "landPos_" << i;
-    dfdf << "detect_fire_uav" << i;
+		dfdf << "detect_fire_uav" << i;
 		std::string s = ss.str();
-    std::string df = dfdf.str();
-    detect_fire[i] = n.advertise<std_msgs::String>(df, 10);
+		std::string df = dfdf.str();
+		detect_fire[i] = n.advertise<std_msgs::String>(df, 10);
 		landPos[i]=n.advertise<std_msgs::String>(s, 10);
-    }
+	}
 
 
-    // Subscribe to /camera/rgb/image_raw topic to read the image data inside the process_image_callback function
-    ros::Subscriber sub1 = n.subscribe("/uav1/bluefox_optflow/image_raw", 10, process_image_callback);
-    ros::Subscriber sub2 = n.subscribe("/uav2/bluefox_optflow/image_raw", 10, process_image_callback);
-    ros::Subscriber sub3 = n.subscribe("/uav3/bluefox_optflow/image_raw", 10, process_image_callback);
-    ros::Subscriber sub4 = n.subscribe("/uav4/bluefox_optflow/image_raw", 10, process_image_callback);
-    ros::Subscriber sub5 = n.subscribe("/uav5/bluefox_optflow/image_raw", 10, process_image_callback);
-    ros::Subscriber sub6 = n.subscribe("/uav6/bluefox_optflow/image_raw", 10, process_image_callback);
-    // Handle ROS communication events
-    ros::spin();
-// }
-    return 0;
-}
+	// Subscribe to /camera/rgb/image_raw topic to read the image data inside the process_image_callback function
+	ros::Subscriber sub1 = n.subscribe("/uav1/bluefox_optflow/image_raw", 10, process_image_callback);
+	ros::Subscriber sub2 = n.subscribe("/uav2/bluefox_optflow/image_raw", 10, process_image_callback);
+	ros::Subscriber sub3 = n.subscribe("/uav3/bluefox_optflow/image_raw", 10, process_image_callback);
+	ros::Subscriber sub4 = n.subscribe("/uav4/bluefox_optflow/image_raw", 10, process_image_callback);
+	ros::Subscriber sub5 = n.subscribe("/uav5/bluefox_optflow/image_raw", 10, process_image_callback);
+	ros::Subscriber sub6 = n.subscribe("/uav6/bluefox_optflow/image_raw", 10, process_image_callback);
+	// Handle ROS communication events
+	ros::spin();
+	// }
+	return 0;
+	}
