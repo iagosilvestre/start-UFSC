@@ -42,7 +42,7 @@ void process_image_callback(const sensor_msgs::Image img){
     for(int i=1;i<=uavQty;i++){
         std::stringstream frameframe,uav2;
         frameframe << "uav" << i <<"/bluefox_optflow_optical";
-        uav2 << "uav"<<i;
+        uav2 << "UAV"<<i;
         std::string uav = uav2.str();
         std::string frame = frameframe.str();
         if (img.header.frame_id==frame){
