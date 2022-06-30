@@ -1,7 +1,7 @@
 # start-UFSC
 Start scripts for SARC-Barinet competition - UFSC team
 
-To execute the start.sh script, copy SARC.world to the MRS UAV System common resources. The World file is located on the /sarc_environment/worlds path.
+To execute the start.sh script, copy SARC.world to the MRS UAV System common resources.
 
 
 
