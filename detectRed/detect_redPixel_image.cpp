@@ -9,8 +9,8 @@
 
 // Define a global client that can request services
 ros::ServiceClient client;
-ros::Publisher detect_fire;// = n.advertise<std_msgs::String>("detect_fire", 10);
 const int uavQty=6;
+ros::Publisher detect_fire[uavQty];// = n.advertise<std_msgs::String>("detect_fire", 10);
 ros::Publisher landPos[uavQty];
 // This function calls the command_robot service to drive the robot in the specified direction
 
@@ -42,48 +42,84 @@ void process_image_callback(const sensor_msgs::Image img){
         }
     }
 
-    if(red_pixel_found){
+
       if(img.header.frame_id=="uav1/bluefox_optflow_optical"){
+        if(red_pixel_found){
         //publica topico uav1 encontrou fogo
         // printf("debug uav 1 detect\n");
         msg.data = "UAV1";
-        detect_fire.publish(msg);
+        detect_fire[1].publish(msg);
+      }
+      else{
+        msg.data = "no fire";
+        detect_fire[1].publish(msg);
+      }
       }
       else if(img.header.frame_id=="uav2/bluefox_optflow_optical"){
+        if(red_pixel_found){
         //publica topico uav2 encontrou fogo
         // printf("debug uav 2 detect\n");
         msg.data = "UAV2";
-        detect_fire.publish(msg);
+        detect_fire[2].publish(msg);
+      }
+      else{
+        msg.data = "no fire";
+        detect_fire[2].publish(msg);
+      }
       }
       else if(img.header.frame_id=="uav3/bluefox_optflow_optical"){
+        if(red_pixel_found){
         //publica topico uav3 encontrou fogo
         // printf("debug uav 3 detect\n");
         msg.data = "UAV3";
-        detect_fire.publish(msg);
+        detect_fire[3].publish(msg);
+      }
+        else{
+          msg.data = "no fire";
+          detect_fire[3].publish(msg);
+        }
       }
       else if(img.header.frame_id=="uav4/bluefox_optflow_optical"){
+        if(red_pixel_found){
         //publica topico uav4 encontrou fogo
         // printf("debug uav 4 detect\n");
         msg.data = "UAV4";
-        detect_fire.publish(msg);
+        detect_fire[4].publish(msg);
+      }
+        else{
+          msg.data = "no fire";
+          detect_fire[4].publish(msg);
+        }
       }
       else if(img.header.frame_id=="uav5/bluefox_optflow_optical"){
+        if(red_pixel_found){
         //publica topico uav5 encontrou fogo
         // printf("debug uav 5 detect\n");
         msg.data = "UAV5";
-        detect_fire.publish(msg);
+        detect_fire[5].publish(msg);
       }
-      if(img.header.frame_id=="uav6/bluefox_optflow_optical"){
+        else{
+          msg.data = "no fire";
+          detect_fire[5].publish(msg);
+        }
+      }
+      else if(img.header.frame_id=="uav6/bluefox_optflow_optical"){
+        if(red_pixel_found){
       // publica topico uav6 encontrou fogo
       // printf("debug uav 6 detect\n");
       msg.data = "UAV6";
-      detect_fire.publish(msg);
+      detect_fire[6].publish(msg);
     }
-}
     else{
-      msg.data = "No fire detected by UAV:"; //falta implementar
-      detect_fire.publish(msg);
+      msg.data = "no fire";
+      detect_fire[6].publish(msg);
     }
+    }
+
+    // else{
+    //   msg.data = "No fire detected by UAV:"; //falta implementar
+    //   detect_fire.publish(msg);
+    // }
 
 
     for(int i=1;i<=uavQty;i++){  //Calcula a posicao de pouso dos drones e bota no topico
@@ -118,12 +154,14 @@ int main(int argc, char** argv){
     // Initialize the process_image node and create a handle to it
     ros::init(argc, argv, "process_image");
     ros::NodeHandle n;
-    detect_fire = n.advertise<std_msgs::String>("detect_fire", 10);
 
 	for(int i=1;i<=uavQty;i++){ //Rotina para criar topicos que contem a posicao de pouso respectiva para cada drone
-		std::stringstream ss;
+		std::stringstream ss,dfdf;
 		ss << "landPos_" << i;
+    dfdf << "detect_fire_uav" << i;
 		std::string s = ss.str();
+    std::string df = dfdf.str();
+    detect_fire[i] = n.advertise<std_msgs::String>(df, 10);
 		landPos[i]=n.advertise<std_msgs::String>(s, 10);
     }
 
