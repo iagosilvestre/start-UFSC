@@ -2,6 +2,7 @@
 #include "math.h"
 #include <sensor_msgs/Image.h>
 #include <std_msgs/String.h>
+#include <std_msgs/Int8.h>
 #include <iostream>
 #include <vector>
 #include <sstream>
@@ -23,7 +24,7 @@ void process_image_callback(const sensor_msgs::Image img){
     bool red_pixel_found = false;
     // ros::Publisher wuav5_detect = n.advertise<std_msgs::String>("wuav5_detect", 10);
     ros::Rate loop_rate(10);
-    std_msgs::String msg;
+    std_msgs::Int8 msg;
 
 
     // Loop through each pixel in the image and check if there's a red  one
@@ -49,11 +50,11 @@ void process_image_callback(const sensor_msgs::Image img){
           if(red_pixel_found){
           //publica topico uav1 encontrou fogo
           // printf("debug uav 1 detect\n");
-            msg.data = uav;
+            msg.data = i;
             detect_fire[i].publish(msg);
           }
           else{
-            msg.data = "no fire";
+            msg.data = "0";
             detect_fire[i].publish(msg);
           }
         }
