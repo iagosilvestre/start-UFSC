@@ -9,10 +9,11 @@ This repo contains the start scripts for SARC-Barinet competition - UFSC team, i
 
 Requirements:
 * Java >=15 (For Jason BDI Agents)
+* Gradle >= 7
 * [Multi-robot Systems Group UAV system](https://github.com/ctu-mrs/mrs_uav_system)
 * ROS (Noetic Recommended)
 * Rosbridge
-* Gradle >= 7
+
 
 It is recommended that you clone this repo inside the [sarc_environment](https://github.com/2nd-sarc-barinet-aerospace-competition/sarc_environment), 
 before runing the scripts you should copy the world files into the mrs_gazebo_common_resources/worlds/ path.
