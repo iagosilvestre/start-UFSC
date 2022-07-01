@@ -7,11 +7,17 @@ std_altitude(20.0).
 std_heading(0.0).
 land_point(-102.0, -111.0).
 land_radius(10.0).
-diff(2).
+diff(1).
 
 
 //////////////// Rules
-current_position(CX, CY, CZ) :- uav1_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
+current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav1_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
+current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav2_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
+current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav3_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
+current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav4_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
+current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav5_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
+current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav6_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
+
 near(X, Y) :- current_position(CX, CY, CZ)
               & diff(D)
               & math.abs(CX - X) <= D
@@ -98,7 +104,12 @@ my_number_string(S) :- my_number(N)
 //////////////// Follow trajectory
 +!follow_trajectory(CW)
    :  waypoints_list_len(CW)
-   <- +finished_trajectory(N).
+      & my_number(N)
+   <- .broadcast(tell, finished_trajectory(N));
+      +finished_trajectory(N);
+      -+status("finished_trajectory");
+      .print("finished_trajectory");
+      !wait_for_others.
 
 +!follow_trajectory(CW)
    :  waypoints_list(WL)
@@ -109,12 +120,6 @@ my_number_string(S) :- my_number(N)
       .nth(CW, WL, [X, Y, Z]);
       !check_near(X, Y, Z, "waypoint");
       !follow_trajectory(CW+1).
-
-+finished_trajectory(N)
-   :  my_number(N)
-   <- -+status("finished_trajectory");
-      .print("finished_trajectory");
-      !wait_for_others.
 
 
 //////////////// Waiting
@@ -139,7 +144,7 @@ my_number_string(S) :- my_number(N)
    : std_altitude(Z)
    <- -+status("going_to_land_position");
       !check_near(X, Y, Z, "land position");
-      !land.	
+      !land.
 
 +!land
    :  my_number_string(N)
@@ -157,11 +162,13 @@ my_number_string(S) :- my_number(N)
       & not fire_extinguished
    <- .suspend(follow_trajectory(CW));
       -+status("combating_fire");
+      .print("Fire found by ", N, ". Suspending trajectory.")
       .broadcast(tell, found_fire(N, CX, CY));
-      !goto_fire_position(CX, CY, N*10);
+      !goto_fire_position(CX, CY, N*5);
       .wait(10000);
       +fire_extinguished;
-      .resume(follow_trajectory(CW)).
+      .resume(follow_trajectory(CW));
+      .print("Fire extinguished. Resuming trajectory").
 
 +!detected_fire(N)
    :  my_number(N)
@@ -171,40 +178,43 @@ my_number_string(S) :- my_number(N)
       & not fire_extinguished
    <- .suspend(wait_for_others);
       -+status("combating_fire");
+      .print("Fire found by ", N, ". Suspending waiting.")
       .broadcast(tell, found_fire(N, CX, CY));
-      !goto_fire_position(CX, CY, N*10);
+      !goto_fire_position(CX, CY, N*5);
       .wait(10000);
       +fire_extinguished;
-      .resume(wait_for_others).
+      .resume(wait_for_others);
+      .print("Fire extinguished. Resuming waiting").
 
-+found_fire(N, CX, CY)
++found_fire(N, X, Y)
    : not my_number(N)
-      & current_position(CX, CY, CZ)
       & .intend(follow_trajectory(CW))
       & not status("combating_fire")
       & not fire_extinguished
    <- .suspend(follow_trajectory(CW));
       -+status("combating_fire");
-      !goto_fire_position(CX+N, CY, N*10);
+      .print("Fire found by ", N, ". Suspending trajectory.")
+      !goto_fire_position(X+N, Y, N*5);
       .wait(10000);
       +fire_extinguished;
-      .resume(follow_trajectory(CW)).
+      .resume(follow_trajectory(CW));
+      .print("Fire extinguished. Resuming trajectory").
 
-+found_fire(N, CX, CY)
++found_fire(N, X, Y)
    : not my_number(N)
-      & current_position(CX, CY, CZ)
       & .intend(wait_for_others)
       & not status("combating_fire")
       & not fire_extinguished
    <- .suspend(wait_for_others);
       -+status("combating_fire");
-      !goto_fire_position(CX+N, CY, N*10);
+      .print("Fire found by ", N, ". Suspending waiting.")
+      !goto_fire_position(X+N, Y, N*5);
       .wait(10000);
       +fire_extinguished;
-      .resume(wait_for_others).
+      .resume(wait_for_others);
+      .print("Fire extinguished. Resuming waiting").
 
 +!goto_fire_position(X, Y, Z)
-   :  my_number(N)
    <- !check_near(X, Y, Z, "fire position").
 
 
@@ -222,5 +232,5 @@ my_number_string(S) :- my_number(N)
 
 
 //////////////// Handling plan failure
-+detected_fire(_).
-+found_fire(_, _, _).   
++!detected_fire(_).
++!found_fire(_, _, _).   
