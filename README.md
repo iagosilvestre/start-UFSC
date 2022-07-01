@@ -36,3 +36,13 @@ To execute the SARC environment simulation, you must run the ./start.sh script
 
     ./start.sh
 
+
+In another terminal, in the /detectRed/build path, run the fire detection program after the gazebo simulation has finished spawning the drones:
+
+    ./detect_redPixel_image
+
+And finally run the Jason BDI Agents in the /uav_agents/ path:
+
+    ./gradlew
+
+
