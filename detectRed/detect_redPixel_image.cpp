@@ -21,7 +21,8 @@ void process_image_callback(const sensor_msgs::Image img){
 
     int red_pixel = 200;
     int red_height,red_width;
-    bool red_pixel_found = false;
+    //bool red_pixel_found = false;
+    int redQty=0;
     // ros::Publisher wuav5_detect = n.advertise<std_msgs::String>("wuav5_detect", 10);
     ros::Rate loop_rate(10);
     std_msgs::Int8 msg;
@@ -32,14 +33,15 @@ void process_image_callback(const sensor_msgs::Image img){
     for(int i = 0; i < img.height; i++){
         for(int j = 0; j < img.width; j++){
             if(img.data[i*img.step + j*3] >= 200 && img.data[i*img.step + j*3 + 1] <= 60 && img.data[i*img.step + j*3 + 2] <= 60 ){
-                red_pixel_found = true;
+                //red_pixel_found = true;
+                redQty+=1;
                 red_height = i;
                 red_width = j;
                 break;
             }
         }
     }
-
+    //std::cout << redQty << "\n";
     for(int i=1;i<=uavQty;i++){
         std::stringstream frameframe,uav2;
         frameframe << "uav" << i <<"/bluefox_optflow_optical";
@@ -47,7 +49,8 @@ void process_image_callback(const sensor_msgs::Image img){
         std::string uav = uav2.str();
         std::string frame = frameframe.str();
         if (img.header.frame_id==frame){
-          if(red_pixel_found){
+          //if(red_pixel_found){
+          if(redQty>=50){
           //publica topico uav1 encontrou fogo
           // printf("debug uav 1 detect\n");
             msg.data = i;
