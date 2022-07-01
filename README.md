@@ -46,3 +46,13 @@ And finally run the Jason BDI Agents in the /uav_agents/ path:
     ./gradlew
 
 
+
+## Authors
+
+- Jomi Fred Hübner
+- Leandro Buss Becker
+- Maiquel de Brito
+- Bruno de Lima
+- Iago de Oliveira Silvestre
+- Pedro Henrique Dias
+
