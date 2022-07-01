@@ -19,12 +19,12 @@ near(X, Y) :- current_position(CX, CY, CZ)
 my_number_string(S) :- my_number(N)
                        & .term2string(N, S).
 
-+detect_fire_uav1(data(N)) : my_number(N) <- !detected_fire(N).
-+detect_fire_uav2(data(N)) : my_number(N) <- !detected_fire(N).
-+detect_fire_uav3(data(N)) : my_number(N) <- !detected_fire(N).
-+detect_fire_uav4(data(N)) : my_number(N) <- !detected_fire(N).
-+detect_fire_uav5(data(N)) : my_number(N) <- !detected_fire(N).
-+detect_fire_uav6(data(N)) : my_number(N) <- !detected_fire(N).
++detect_fire_uav1(N) : my_number(N) <- !detected_fire(N).
++detect_fire_uav2(N) : my_number(N) <- !detected_fire(N).
++detect_fire_uav3(N) : my_number(N) <- !detected_fire(N).
++detect_fire_uav4(N) : my_number(N) <- !detected_fire(N).
++detect_fire_uav5(N) : my_number(N) <- !detected_fire(N).
++detect_fire_uav6(N) : my_number(N) <- !detected_fire(N).
 
 //////////////// Start
 !start.
@@ -139,7 +139,7 @@ my_number_string(S) :- my_number(N)
    : std_altitude(Z)
    <- -+status("going_to_land_position");
       !check_near(X, Y, Z, "land position");
-      !land.
+      !land.	
 
 +!land
    :  my_number_string(N)
