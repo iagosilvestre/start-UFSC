@@ -12,6 +12,7 @@ Requirements:
 * [Multi-robot Systems Group UAV system](https://github.com/ctu-mrs/mrs_uav_system)
 * ROS (Noetic Recommended)
 * Rosbridge
+* Gradle >= 7
 
 It is recommended that you clone this repo inside the [sarc_environment](https://github.com/2nd-sarc-barinet-aerospace-competition/sarc_environment), 
 before runing the scripts you should copy the world files into the mrs_gazebo_common_resources/worlds/ path.
@@ -23,12 +24,7 @@ before runing the scripts you should copy the world files into the mrs_gazebo_co
 
 And before running the Fire detection program and Jason BDI Agents, you must change UNIX permissions:
     
-    cd detectRed/build
-    chmod +x detect_redPixel_image
-    cd ..
-    cd ..
-    cd uav_agents
-    chmod +x gradlew
+    chmod +x detectRed/build/detect_redPixel_image uav_agents/gradlew
 
 You can check this [video](https://youtu.be/-bLGymzZwzI) for a simulation using the basicstart script.
 
