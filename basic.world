@@ -142,7 +142,7 @@
       </link>
       <static>1</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-21.1336 -16.4654 0 0 -0 0</pose>
+      <pose>-18.1336 -16.4654 0 0 -0 0</pose>
     </model>
     
     
@@ -182,7 +182,7 @@
       </link>
       <static>1</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-14.0918 -11.0325 0 0 -0 0</pose>
+      <pose>-10.0918 -11.0325 0 0 -0 0</pose>
     </model>
     
     
@@ -223,6 +223,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-36.2289 -26.3703 0 0 -0 0</pose>
     </model>
+    
     <model name='SARctree_1'>
       <link name='link'>
         <inertial>
@@ -256,7 +257,7 @@
       </link>
       <static>1</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-11.3892 -27.7944 0 0 -0 0</pose>
+      <pose>-10.3892 -27.7944 0 0 -0 0</pose>
     </model>
     
     
