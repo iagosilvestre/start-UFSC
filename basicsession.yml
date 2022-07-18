@@ -39,7 +39,7 @@ windows:
           export UAV_NAME=uav9; waitForOdometry; roslaunch mrs_uav_general core.launch
         - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "10 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/posBasic/pos10.yaml";
           export UAV_NAME=uav10; waitForOdometry; roslaunch mrs_uav_general core.launch
-        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "11 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/posBasic/pos11.yaml";
+        - waitForSimulation; rosservice call /mrs_drone_s   pawner/spawn "11 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/posBasic/pos11.yaml";
           export UAV_NAME=uav11; waitForOdometry; roslaunch mrs_uav_general core.launch
         - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "12 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/posBasic/pos12.yaml";
           export UAV_NAME=uav12; waitForOdometry; roslaunch mrs_uav_general core.launch
