@@ -29,12 +29,24 @@ public class DemoEmbeddedAgentROS extends EmbeddedAgent {
         addTopic("uav4/odometry/gps_local_odom", "nav_msgs/Odometry");
         addTopic("uav5/odometry/gps_local_odom", "nav_msgs/Odometry");
         addTopic("uav6/odometry/gps_local_odom", "nav_msgs/Odometry");
+        addTopic("uav7/odometry/gps_local_odom", "nav_msgs/Odometry");
+        addTopic("uav8/odometry/gps_local_odom", "nav_msgs/Odometry");
+        addTopic("uav9/odometry/gps_local_odom", "nav_msgs/Odometry");
+        addTopic("uav10/odometry/gps_local_odom", "nav_msgs/Odometry");
+        addTopic("uav11/odometry/gps_local_odom", "nav_msgs/Odometry");
+        addTopic("uav12/odometry/gps_local_odom", "nav_msgs/Odometry");
         addTopic("detect_fire_uav1", "std_msgs/Int8");
         addTopic("detect_fire_uav2", "std_msgs/Int8");
         addTopic("detect_fire_uav3", "std_msgs/Int8");
         addTopic("detect_fire_uav4", "std_msgs/Int8");
         addTopic("detect_fire_uav5", "std_msgs/Int8");
         addTopic("detect_fire_uav6", "std_msgs/Int8");
+        addTopic("detect_fire_uav7", "std_msgs/Int8");
+        addTopic("detect_fire_uav8", "std_msgs/Int8");
+        addTopic("detect_fire_uav9", "std_msgs/Int8");
+        addTopic("detect_fire_uav10", "std_msgs/Int8");
+        addTopic("detect_fire_uav11", "std_msgs/Int8");
+        addTopic("detect_fire_uav12", "std_msgs/Int8");
                
 		/* roscore1 is a connection with a ros master. Instantiate new DefaultRos4EmbeddedMas connect the agent with more ros masters*/
 		DefaultRos4EmbeddedMas roscore1 = new DefaultRos4EmbeddedMas("ws://localhost:9090",nodes, topics);		

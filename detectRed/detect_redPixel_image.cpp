@@ -10,7 +10,7 @@
 
 // Define a global client that can request services
 ros::ServiceClient client;
-const int uavQty=6;
+const int uavQty=12;
 ros::Publisher detect_fire[uavQty];// = n.advertise<std_msgs::String>("detect_fire", 10);
 //ros::Publisher landPos[uavQty];
 ros::Subscriber subsc[uavQty];
