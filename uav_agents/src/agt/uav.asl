@@ -47,9 +47,9 @@ my_number_string(S) :- my_number(N)
 +!start
     <- .wait(100);
       .print("Started!");
-      !calculate_land_position;
+      !calculate_land_position;//trajectory
       !calculate_area;
-      !calculate_waypoints(1, []);
+      !calculate_waypoints(1, []);// pode ser unido com os outros
       !follow_trajectory(0).
 
 
@@ -173,13 +173,14 @@ my_number_string(S) :- my_number(N)
       -+status("combating_fire");
       .print("Fire found by ", N, ". Suspending trajectory.")
       .broadcast(tell, found_fire(N, CX, CY));
-      !goto_fire_position(CX, CY, N*5);
-      .wait(10000);
+	  //acao de combate ao fogo/ na simulacao muda a cor do VANT/ no caso da implementacao real tem que ter uma funcao
+      !goto_fire_position(CX, CY, N*5); // Esse daqui nao parece fazer sentido/testar na simulacao
+      .wait(10000);   
       +fire_extinguished;
       .resume(follow_trajectory(CW));
       .print("Fire extinguished. Resuming trajectory").
 
-+!detected_fire(N)
++!detected_fire(N)  // nao parece fazer sentido
    :  my_number(N)
       & current_position(CX, CY, CZ)
       & .intend(wait_for_others)
@@ -193,7 +194,7 @@ my_number_string(S) :- my_number(N)
       .wait(10000);
       +fire_extinguished;
       .resume(wait_for_others);
-      .print("Fire extinguished. Resuming waiting").
+      .print("Fire extinguished. Resuming waiting").  // nao parece fazer sentido
 
 +found_fire(N, X, Y)
    : not my_number(N)
@@ -204,6 +205,7 @@ my_number_string(S) :- my_number(N)
       -+status("combating_fire");
       .print("Fire found by ", N, ". Suspending trajectory.")
       !goto_fire_position(X+N, Y, N*5);
+	  //acao de combate ao fogo/ na simulacao muda a cor do VANT/ no caso da implementacao real tem que ter uma funcao
       .wait(10000);
       +fire_extinguished;
       .resume(follow_trajectory(CW));
@@ -218,6 +220,7 @@ my_number_string(S) :- my_number(N)
       -+status("combating_fire");
       .print("Fire found by ", N, ". Suspending waiting.")
       !goto_fire_position(X+N, Y, N*5);
+	  //acao de combate ao fogo/ na simulacao muda a cor do VANT/ no caso da implementacao real tem que ter uma funcao
       .wait(10000);
       +fire_extinguished;
       .resume(wait_for_others);
