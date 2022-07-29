@@ -1,7 +1,7 @@
 //////////////// Initial beliefs
 status("None").
 world_area(250, 250, 0, 0).
-num_of_uavs(6).
+num_of_uavs(12).
 camera_range(50).
 std_altitude(20.0).
 std_heading(0.0).
