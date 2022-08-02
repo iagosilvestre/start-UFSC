@@ -27,30 +27,94 @@ windows:
           export UAV_NAME=uav3; waitForOdometry; roslaunch mrs_uav_general core.launch
         - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "4 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/posBasic/pos4.yaml";
           export UAV_NAME=uav4; waitForOdometry; roslaunch mrs_uav_general core.launch
+        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "5 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/posBasic/pos5.yaml";
+          export UAV_NAME=uav5; waitForOdometry; roslaunch mrs_uav_general core.launch
+        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "6 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/posBasic/pos6.yaml";
+          export UAV_NAME=uav6; waitForOdometry; roslaunch mrs_uav_general core.launch
+        #- waitForSimulation; rosservice call /mrs_drone_spawner/spawn "7 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/posBasic/pos7.yaml";
+        #  export UAV_NAME=uav7; waitForOdometry; roslaunch mrs_uav_general core.launch
+        #- waitForSimulation; rosservice call /mrs_drone_spawner/spawn "8 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/posBasic/pos8.yaml";
+        #  export UAV_NAME=uav8; waitForOdometry; roslaunch mrs_uav_general core.launch
+        #- waitForSimulation; rosservice call /mrs_drone_spawner/spawn "9 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/posBasic/pos9.yaml";
+        #  export UAV_NAME=uav9; waitForOdometry; roslaunch mrs_uav_general core.launch
+        #- waitForSimulation; rosservice call /mrs_drone_spawner/spawn "10 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/posBasic/pos10.yaml";
+        #  export UAV_NAME=uav10; waitForOdometry; roslaunch mrs_uav_general core.launch
+        #- waitForSimulation; rosservice call /mrs_drone_s   pawner/spawn "11 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/posBasic/pos11.yaml";
+        #  export UAV_NAME=uav11; waitForOdometry; roslaunch mrs_uav_general core.launch
+        #- waitForSimulation; rosservice call /mrs_drone_spawner/spawn "12 --enable-rangefinder --enable-realsense-down --enable_bluefox_camera --enable-ground-truth --pos_file `pwd`/posBasic/pos12.yaml";
+        #  export UAV_NAME=uav12; waitForOdometry; roslaunch mrs_uav_general core.launch
   - SARC-UFSC-takeoff:
       layout: tiled
       panes:
         - waitForOdometry;export UAV_NAME=uav1;
-          sleep 20;
+          sleep 40;
           rosservice call /$UAV_NAME/control_manager/motors 1;
           rosservice call /$UAV_NAME/mavros/cmd/arming 1;
           rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
           rosservice call /$UAV_NAME/uav_manager/takeoff
         - waitForOdometry;export UAV_NAME=uav2;
-          sleep 20;
+          sleep 40;
           rosservice call /$UAV_NAME/control_manager/motors 1;
           rosservice call /$UAV_NAME/mavros/cmd/arming 1;
           rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
           rosservice call /$UAV_NAME/uav_manager/takeoff
         - waitForOdometry;export UAV_NAME=uav3;
-          sleep 20;
+          sleep 40;
           rosservice call /$UAV_NAME/control_manager/motors 1;
           rosservice call /$UAV_NAME/mavros/cmd/arming 1;
           rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
           rosservice call /$UAV_NAME/uav_manager/takeoff
         - waitForOdometry;export UAV_NAME=uav4;
-          sleep 20;
+          sleep 40;
           rosservice call /$UAV_NAME/control_manager/motors 1;
           rosservice call /$UAV_NAME/mavros/cmd/arming 1;
           rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
           rosservice call /$UAV_NAME/uav_manager/takeoff
+        - waitForOdometry;export UAV_NAME=uav5;
+          sleep 40;
+          rosservice call /$UAV_NAME/control_manager/motors 1;
+          rosservice call /$UAV_NAME/mavros/cmd/arming 1;
+          rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
+          rosservice call /$UAV_NAME/uav_manager/takeoff
+        - waitForOdometry;export UAV_NAME=uav6;
+          sleep 40;
+          rosservice call /$UAV_NAME/control_manager/motors 1;
+          rosservice call /$UAV_NAME/mavros/cmd/arming 1;
+          rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
+          rosservice call /$UAV_NAME/uav_manager/takeoff
+        #- waitForOdometry;export UAV_NAME=uav7;
+         # sleep 40;
+         # rosservice call /$UAV_NAME/control_manager/motors 1;
+         # rosservice call /$UAV_NAME/mavros/cmd/arming 1;
+         # rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
+         # rosservice call /$UAV_NAME/uav_manager/takeoff
+        #- waitForOdometry;export UAV_NAME=uav8;
+         # sleep 40;
+         # rosservice call /$UAV_NAME/control_manager/motors 1;
+         # rosservice call /$UAV_NAME/mavros/cmd/arming 1;
+         # rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
+         # rosservice call /$UAV_NAME/uav_manager/takeoff
+        #- waitForOdometry;export UAV_NAME=uav9;
+         # sleep 40;
+         # rosservice call /$UAV_NAME/control_manager/motors 1;
+         # rosservice call /$UAV_NAME/mavros/cmd/arming 1;
+         # rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
+         # rosservice call /$UAV_NAME/uav_manager/takeoff
+        #- waitForOdometry;export UAV_NAME=uav10;
+         # sleep 40;
+         # rosservice call /$UAV_NAME/control_manager/motors 1;
+         # rosservice call /$UAV_NAME/mavros/cmd/arming 1;
+         # rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
+         # rosservice call /$UAV_NAME/uav_manager/takeoff
+        #- waitForOdometry;export UAV_NAME=uav11;
+         # sleep 40;
+         # rosservice call /$UAV_NAME/control_manager/motors 1;
+         # rosservice call /$UAV_NAME/mavros/cmd/arming 1;
+         # rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
+         # rosservice call /$UAV_NAME/uav_manager/takeoff
+        #- waitForOdometry;export UAV_NAME=uav12;
+         # sleep 40;
+         # rosservice call /$UAV_NAME/control_manager/motors 1;
+         # rosservice call /$UAV_NAME/mavros/cmd/arming 1;
+         # rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
+         # rosservice call /$UAV_NAME/uav_manager/takeoff

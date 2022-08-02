@@ -1,7 +1,7 @@
 //////////////// Initial beliefs
 status("None").
 world_area(250, 250, 0, 0).
-num_of_uavs(12).
+num_of_uavs(6).
 camera_range(50).
 std_altitude(20.0).
 std_heading(0.0).
@@ -18,12 +18,12 @@ current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav4_odometry_gps_local_
 current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav5_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
 current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav6_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
 
-current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav7_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
-current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav8_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
-current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav9_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
-current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav10_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
-current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav11_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
-current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav12_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
+//current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav7_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
+//current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav8_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
+//current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav9_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
+//current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav10_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
+//current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav11_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
+//current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav12_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
 
 
 
@@ -47,43 +47,39 @@ my_number_string(S) :- my_number(N)
 +!start
     <- .wait(100);
       .print("Started!");
-      !calculate_land_position;//trajectory
-      !calculate_area;
-      !calculate_waypoints(1, []);// pode ser unido com os outros
+      !calculate_trajectory;//trajectory//!calculate_area;//!calculate_waypoints(1, []);// pode ser unido com os outros
       !follow_trajectory(0).
 
 
 //////////////// Calculating land position
-+!calculate_land_position
++!calculate_trajectory
    :  my_number(N)
       & land_point(LX, LY)
       & land_radius(R)
       & num_of_uavs(NumOfUavs)
+      & world_area(H, W, CX, CY)
    <- .print("Calculating landing position");
       -+status("calculating_land_position");
-      NumOfColumns = NumOfUavs/2;
-      RectangleHeight = R/2;
-      RectangleWidth = R/NumOfColumns;
-      My_landing_x = LX - R/2 + RectangleWidth/2 + ((N-1) mod NumOfColumns)*RectangleWidth;
-      My_landing_y = LY - R/2 + RectangleHeight/2 + (math.floor((N-1)/NumOfColumns))*RectangleHeight;
-      +my_landing_position(My_landing_x, My_landing_y).
+      LndNumOfColumns = NumOfUavs/2;
+      LndRectangleHeight = R/2;
+      LndRectangleWidth = R/LndNumOfColumns;
+      My_landing_x = LX - R/2 + LndRectangleWidth/2 + ((N-1) mod LndNumOfColumns)*LndRectangleWidth;
+      My_landing_y = LY - R/2 + LndRectangleHeight/2 + (math.floor((N-1)/LNumOfColumns))*LndRectangleHeight;
+      +my_landing_position(My_landing_x, My_landing_y);
+      //////////////// Calculating area
+      .print("Calculating area");
+      +status("calculating_area");
+      AreaNumOfColumns = NumOfUavs/2;
+      AreaRectangleHeight = H/2;
+      AreaRectangleWidth = W/AreaNumOfColumns;
+      X1 = CX - W/2 + ((N-1) mod AreaNumOfColumns)*AreaRectangleWidth;
+      X2 = CX - W/2 + ((N-1) mod AreaNumOfColumns + 1)*AreaRectangleWidth;
+      Y1 = CY - H/2 + (math.floor((N-1)/AreaNumOfColumns))*AreaRectangleHeight;
+      Y2 = CY - H/2 + (math.floor((N-1)/AreaNumOfColumns) + 1)*AreaRectangleHeight;
+      +my_area(X1, X2, Y1, Y2);
+      //////////////// Calculating waypoints
+      !calculate_waypoints(1, []).
 
-
-//////////////// Calculating area
-+!calculate_area
-    :   my_number(N)
-        & world_area(H, W, CX, CY)
-        & num_of_uavs(NumOfUavs)
-    <-  .print("Calculating area");
-        +status("calculating_area");
-        NumOfColumns = NumOfUavs/2;
-        RectangleHeight = H/2;
-        RectangleWidth = W/NumOfColumns;
-        X1 = CX - W/2 + ((N-1) mod NumOfColumns)*RectangleWidth;
-        X2 = CX - W/2 + ((N-1) mod NumOfColumns + 1)*RectangleWidth;
-        Y1 = CY - H/2 + (math.floor((N-1)/NumOfColumns))*RectangleHeight;
-        Y2 = CY - H/2 + (math.floor((N-1)/NumOfColumns) + 1)*RectangleHeight;
-        +my_area(X1, X2, Y1, Y2).
 
 
 //////////////// Calculating waypoints
@@ -173,28 +169,11 @@ my_number_string(S) :- my_number(N)
       -+status("combating_fire");
       .print("Fire found by ", N, ". Suspending trajectory.")
       .broadcast(tell, found_fire(N, CX, CY));
-	  //acao de combate ao fogo/ na simulacao muda a cor do VANT/ no caso da implementacao real tem que ter uma funcao
-      !goto_fire_position(CX, CY, N*5); // Esse daqui nao parece fazer sentido/testar na simulacao
       .wait(10000);   
       +fire_extinguished;
       .resume(follow_trajectory(CW));
       .print("Fire extinguished. Resuming trajectory").
 
-+!detected_fire(N)  // nao parece fazer sentido
-   :  my_number(N)
-      & current_position(CX, CY, CZ)
-      & .intend(wait_for_others)
-      & not status("combating_fire")
-      & not fire_extinguished
-   <- .suspend(wait_for_others);
-      -+status("combating_fire");
-      .print("Fire found by ", N, ". Suspending waiting.")
-      .broadcast(tell, found_fire(N, CX, CY));
-      !goto_fire_position(CX, CY, N*5);
-      .wait(10000);
-      +fire_extinguished;
-      .resume(wait_for_others);
-      .print("Fire extinguished. Resuming waiting").  // nao parece fazer sentido
 
 +found_fire(N, X, Y)
    : not my_number(N)
