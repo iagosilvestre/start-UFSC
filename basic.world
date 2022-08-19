@@ -341,6 +341,6 @@
       <frame_to_follow>uav1</frame_to_follow>
     </plugin>
     <!--}-->
-
+  <plugin name="spawn_buoy" filename="libspawn_buoy.so"/>
   </world>
 </sdf>

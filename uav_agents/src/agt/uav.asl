@@ -169,10 +169,11 @@ my_number_string(S) :- my_number(N)
       -+status("combating_fire");
       .print("Fire found by ", N, ". Suspending trajectory.")
       .broadcast(tell, found_fire(N, CX, CY));
-      .wait(10000);   
-      +fire_extinguished;
-      .resume(follow_trajectory(CW));
-      .print("Fire extinguished. Resuming trajectory").
+      !combat_fireR(CW).
+      //.wait(10000);   
+      //+fire_extinguished;
+      //.resume(follow_trajectory(CW));
+      //.print("Fire extinguished. Resuming trajectory").
 
 
 +found_fire(N, X, Y)
@@ -183,12 +184,13 @@ my_number_string(S) :- my_number(N)
    <- .suspend(follow_trajectory(CW));
       -+status("combating_fire");
       .print("Fire found by ", N, ". Suspending trajectory.")
-      !goto_fire_position(X+N, Y, N*5);
+      !goto_fire_position(X+N, Y, 15);
 	  //acao de combate ao fogo/ na simulacao muda a cor do VANT/ no caso da implementacao real tem que ter uma funcao
-      .wait(10000);
-      +fire_extinguished;
-      .resume(follow_trajectory(CW));
-      .print("Fire extinguished. Resuming trajectory").
+      !combat_fireR(CW).
+      //.wait(10000);
+      //+fire_extinguished;
+      //.resume(follow_trajectory(CW));
+      //.print("Fire extinguished. Resuming trajectory").
 
 +found_fire(N, X, Y)
    : not my_number(N)
@@ -198,16 +200,29 @@ my_number_string(S) :- my_number(N)
    <- .suspend(wait_for_others);
       -+status("combating_fire");
       .print("Fire found by ", N, ". Suspending waiting.")
-      !goto_fire_position(X+N, Y, N*5);
+      !goto_fire_position(X+N, Y, 15);
 	  //acao de combate ao fogo/ na simulacao muda a cor do VANT/ no caso da implementacao real tem que ter uma funcao
-      .wait(10000);
-      +fire_extinguished;
-      .resume(wait_for_others);
-      .print("Fire extinguished. Resuming waiting").
+      !combat_fire.
+      
 
 +!goto_fire_position(X, Y, Z)
    <- !check_near(X, Y, Z, "fire position").
 
+//////////////// Combat Fire
+
++!combat_fire
+   <- .wait(10000);
+      +fire_extinguished;
+      .resume(wait_for_others);
+      .print("Fire extinguished. Resuming waiting").
+      
+      
++!combat_fireR(CW)
+   <- .wait(10000);
+      +fire_extinguished;
+      .resume(follow_trajectory(CW));
+      .print("Fire extinguished. Resuming trajectory").      
+      
 
 //////////////// Check Near
 +!check_near(X, Y, Z, S)
