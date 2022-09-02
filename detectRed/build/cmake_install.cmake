@@ -1,4 +1,4 @@
-# Install script for directory: /home/iago/mrs_workspace/src/sarc_environment/start-UFSC/detectRed
+# Install script for directory: /home/ctc_das/mrs_workspace/src/sarc_environment/start-UFSC/detectRed
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/detect_redPixel_image"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/iago/mrs_workspace/src/sarc_environment/start-UFSC/detectRed/build/detect_redPixel_image")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/ctc_das/mrs_workspace/src/sarc_environment/start-UFSC/detectRed/build/detect_redPixel_image")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/detect_redPixel_image" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/detect_redPixel_image")
     file(RPATH_CHANGE
@@ -65,5 +65,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/iago/mrs_workspace/src/sarc_environment/start-UFSC/detectRed/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/ctc_das/mrs_workspace/src/sarc_environment/start-UFSC/detectRed/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

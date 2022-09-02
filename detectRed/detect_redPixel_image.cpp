@@ -10,7 +10,7 @@
 
 // Define a global client that can request services
 ros::ServiceClient client;
-const int uavQty=12;
+const int uavQty=6;
 ros::Publisher detect_fire[uavQty];// = n.advertise<std_msgs::String>("detect_fire", 10);
 //ros::Publisher landPos[uavQty];
 ros::Subscriber subsc[uavQty];
@@ -67,13 +67,13 @@ void process_image_callback(const sensor_msgs::Image img){
 }
 int main(int argc, char** argv){
 	// Initialize the process_image node and create a handle to it
-	ros::init(argc, argv, "processimage");
+	ros::init(argc, argv, "process_image");
 	ros::NodeHandle n;
 
 	for(int i=1;i<=uavQty;i++){ //Rotina para criar topicos que contem a posicao de pouso respectiva para cada drone
 		std::stringstream ss,dfdf,subsub;
 		ss << "landPos_" << i;
-		dfdf << "detect_fire_uav" << i << "/rtv";
+		dfdf << "detect_fire_uav" << i;
     subsub << "/uav" << i <<"/bluefox_optflow/image_raw";
 		std::string s = ss.str();
 		std::string df = dfdf.str();

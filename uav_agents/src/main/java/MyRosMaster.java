@@ -1,3 +1,17 @@
+/**
+
+**/
+
+import java.util.Collection;
+
+import embedded.mas.bridges.jacamo.JSONWatcherDevice;
+import embedded.mas.bridges.jacamo.IPhysicalInterface;
+import embedded.mas.bridges.jacamo.DefaultDevice;
+import embedded.mas.bridges.jacamo.LiteralDevice;
+import embedded.mas.bridges.ros.DefaultRos4EmbeddedMas;
+import jason.asSyntax.Atom;
+import jason.asSyntax.Literal;
+
 import embedded.mas.bridges.ros.RosMaster;
 import embedded.mas.bridges.ros.DefaultRos4EmbeddedMas;
 import embedded.mas.bridges.ros.ServiceParameters;
@@ -13,23 +27,18 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
+
 public class MyRosMaster extends RosMaster {
 
 	public MyRosMaster(Atom id, DefaultRos4EmbeddedMas microcontroller) {
-
 		super(id, microcontroller);
-
 	}
 
-        /* Translate actions into ros topic publications and service requests.
-           args:
-             - for topic publications: 0. Topic name
-                                       1. Topic type
-                                       2. Topic value
-                                        
-             - for service requests: service arguments are the args elements. 
-                                     They must be properly handled in the execEmbeddedAction function                                           
-             
+        /* Translate actions into ros topic publications 
+           args: 0. Topic name
+                 1. Topic type
+                 2. Topic value
            obs: args are Strings. The action arguments are send to the ros as strings.
                 Type conversions are handled in the "microcontroller" (DefaultRos4EmbeddedMas)       
         */
@@ -51,7 +60,9 @@ public class MyRosMaster extends RosMaster {
 			return true;
 
 		}
-
+		else if(actionName.equals("drop")){		   
+		   ((DefaultRos4EmbeddedMas) microcontroller).rosWrite("/rescue_world/drop_buoy","geometry_msgs/Pose","{position: {x: 0.0, y: 0.0, z: 15.0},orientation: {x: 0.0, y: 0.0, z: 0.0, w: 0.0}}");
+		}
 		return false;
 
 	}

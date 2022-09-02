@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/iago/mrs_workspace/src/sarc_environment/start-UFSC/detectRed
+CMAKE_SOURCE_DIR = /home/ctc_das/mrs_workspace/src/sarc_environment/start-UFSC/detectRed
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/iago/mrs_workspace/src/sarc_environment/start-UFSC/detectRed/build
+CMAKE_BINARY_DIR = /home/ctc_das/mrs_workspace/src/sarc_environment/start-UFSC/detectRed/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,9 +126,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/iago/mrs_workspace/src/sarc_environment/start-UFSC/detectRed/build/CMakeFiles /home/iago/mrs_workspace/src/sarc_environment/start-UFSC/detectRed/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ctc_das/mrs_workspace/src/sarc_environment/start-UFSC/detectRed/build/CMakeFiles /home/ctc_das/mrs_workspace/src/sarc_environment/start-UFSC/detectRed/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/iago/mrs_workspace/src/sarc_environment/start-UFSC/detectRed/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ctc_das/mrs_workspace/src/sarc_environment/start-UFSC/detectRed/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

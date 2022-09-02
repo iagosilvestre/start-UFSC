@@ -9,7 +9,7 @@ land_point(-102.0, -111.0).
 land_radius(10.0).
 diff(1).
 
-
+//pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW))))
 //////////////// Rules
 current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav1_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
 current_position(CX, CY, CZ) :- my_frame_id(Frame_id) & uav2_odometry_gps_local_odom(header(seq(Seq),stamp(secs(Secs),nsecs(Nsecs)),frame_id(Frame_id)),child_frame_id(CFI),pose(pose(position(x(CX),y(CY),z(CZ)),orientation(x(OX),y((OY)),z((OZ)),w((OW)))),covariance(CV)),twist(twist(linear(x(LX),y(LY),z((LZ))),angular(x(AX),y((AY)),z((AZ)))),covariance(CV2))).
@@ -46,6 +46,7 @@ my_number_string(S) :- my_number(N)
 
 +!start
     <- .wait(100);
+      //embedded.mas.bridges.jacamo.defaultEmbeddedInternalAction("roscore1","drop",[0.0, 0.0, 0.0]);
       .print("Started!");
       !calculate_trajectory;//trajectory//!calculate_area;//!calculate_waypoints(1, []);// pode ser unido com os outros
       !follow_trajectory(0).
@@ -209,8 +210,10 @@ my_number_string(S) :- my_number(N)
    <- !check_near(X, Y, Z, "fire position").
 
 //////////////// Combat Fire
+      //embedded.mas.bridges.jacamo.defaultEmbeddedInternalAction("roscore1","drop",[CX, CY, CZ]);
 
 +!combat_fire
+   : current_position(CX, CY, CZ)
    <- .wait(10000);
       +fire_extinguished;
       .resume(wait_for_others);
@@ -218,7 +221,9 @@ my_number_string(S) :- my_number(N)
       
       
 +!combat_fireR(CW)
+   : current_position(CX, CY, CZ)
    <- .wait(10000);
+      embedded.mas.bridges.jacamo.defaultEmbeddedInternalAction("roscore1","drop",[CX, CY, CZ]);
       +fire_extinguished;
       .resume(follow_trajectory(CW));
       .print("Fire extinguished. Resuming trajectory").      
